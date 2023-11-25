@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse('this is an index page')
+
+def detail(request):
+    return HttpResponse('<h1 style="color:blue">This is a detail view</h1>')
