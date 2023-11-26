@@ -14,13 +14,15 @@
 
     {% for item in itemlist %}
 
-    <ul>
-        <li>
-            <a href="{% url 'products:detail' item.id %}">
-                {{ item.id }} -- {{ item.item_name }}
-            </a>
-        </li>
-    </ul>
+        <img src="{{ item.item_image }}">
+
+        <ul>
+            <li>
+                <a href="{% url 'products:detail' item.id %}">
+                    {{ item.id }} -- {{ item.item_name }}
+                </a>
+            </li>
+        </ul>
 
     {% endfor %}
         
