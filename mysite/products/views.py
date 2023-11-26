@@ -6,7 +6,12 @@ from products.models import Item
 
 def index(request):
     itemlist = Item.objects.all()
-    return HttpResponse(itemlist)
+    
+    context = {
+        'itemlist':itemlist
+    }
+    
+    return render(request, 'products/index.html', context)
 
 def detail(request):
     return HttpResponse('<h1 style="color:blue">This is a detail view</h1>')
