@@ -12,10 +12,10 @@ def register(request):
 
         if form.is_valid:
             username = form.cleaned_data.get('username')
-            messages.success(request, 'Welcome {}, your account has been created', format(username))
+            messages.success(request, 'Welcome {}, your account has been created, now you may log in'.format(username))
             
             form.save()
-            return redirect('products:index')
+            return redirect('login')
     
     else:
         form = RegisterForm()
