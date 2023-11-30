@@ -65,3 +65,6 @@ def logout_view(request):
         '{}, you have successfully logged out'.format(request.user.username)
     )
     return redirect('food:index')
+
+def profilepage(request):
+    return render(request, 'users/profile.html')
