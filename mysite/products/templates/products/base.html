@@ -17,17 +17,29 @@
         </a>
 
         <div class="navbar">
-            <a href="{% url 'products:create_item' %}" class="nav-item nav-link btn btn-light">
-                Add Item
-            </a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'products:create_item' %}" class="nav-item nav-link btn btn-light">
+                    Add Item
+                </a>
 
-            <a href="#" class="nav-item nav-link btn btn-light">
-                Profile
-            </a>
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Profile
+                </a>
 
-            <a href="{% url 'register' %}" class="nav-item nav-link btn btn-light">
-                Sign Up
-            </a>
+                <a href="{% url 'logout' %}" class="nav-item nav-link btn btn-light">
+                    logout
+                </a>
+
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-item nav-link btn btn-dark">
+                    Login
+                </a>
+
+                <a href="{% url 'register' %}" class="nav-item nav-link btn btn-dark">
+                    Sign Up
+                </a>
+            
+            {% endif %}
         </div>
     </nav>
 

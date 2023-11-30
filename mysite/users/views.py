@@ -29,15 +29,15 @@ def register(request):
 def login_view(request):
     
     if request.method == 'POST':
-        username = method.POST['username']
-        password = method.POST['password']
+        username = request.POST['username']
+        password = request.POST['password']
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request,user)
             return redirect('products:index')
 
-    return redirect(request, 'users/login.html')
+    return render(request, 'users/login.html')
 
 def logout_view(request):
 
