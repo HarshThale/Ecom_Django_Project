@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from users.forms import RegisterForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -38,3 +38,11 @@ def login_view(request):
             return redirect('products:index')
 
     return redirect(request, 'users/login.html')
+
+def logout_view(request):
+
+    if request.method == 'POST':
+        logout(request)
+        return redirect('food:index')
+
+    return render(request, 'users/logout.html')
