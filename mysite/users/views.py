@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from users.forms import RegisterForm
 from django.contrib import messages
 
 # Create your views here.
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
 
         if form.is_valid:
             username = form.cleaned_data.get('username')
@@ -16,7 +17,7 @@ def register(request):
             return redirect('products:index')
     
     else:
-        form = UserCreationForm()
+        form = RegisterForm()
 
         context = {
             'form':form
