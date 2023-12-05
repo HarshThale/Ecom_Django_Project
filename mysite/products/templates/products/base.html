@@ -18,6 +18,42 @@
 
         <div class="navbar">
             {% if user.is_authenticated %}
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Store
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Mac
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    iPad
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    iPhone
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Watch
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Airpods
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    TV & Home
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Entertainment
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Accesories
+                </a>
+
                 <a href="{% url 'products:create_item' %}" class="nav-item nav-link btn btn-light">
                     Add Item
                 </a>
@@ -31,11 +67,47 @@
                 </a>
 
             {% else %}
-                <a href="{% url 'login' %}" class="nav-item nav-link btn btn-dark">
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Store
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Mac
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    iPad
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    iPhone
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Watch
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Airpods
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    TV & Home
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Entertainment
+                </a>
+
+                <a href="#" class="nav-item nav-link btn btn-light">
+                    Accesories
+                </a>
+
+                <a href="{% url 'login' %}" class="nav-item nav-link btn btn-light">
                     Login
                 </a>
 
-                <a href="{% url 'register' %}" class="nav-item nav-link btn btn-dark">
+                <a href="{% url 'register' %}" class="nav-item nav-link btn btn-light">
                     Sign Up
                 </a>
             
