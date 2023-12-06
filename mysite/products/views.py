@@ -4,6 +4,8 @@ from products.models import Item
 from products.forms import ItemForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 # Create your views here.
 # -------------------------------------------------------------------------------
@@ -73,6 +75,21 @@ def create_item(request):
     }
 
     return render(request, 'products/item-form.html', context)
+
+
+#class based create item view
+# -------------------------------------------------------------------------------
+
+class CreateItem(CreateView):
+
+    model = Item
+    fields = ['prod_code', 'for_user', 'item_name', 'item_desc', 'item_price', 'item_image']
+    template_name = 'products/item-form.html'
+    success_url = reverse_lazy('products:index')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 # function based update item view
