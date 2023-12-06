@@ -3,21 +3,43 @@
 
 {% block body %}    
 
-<form method="POST"> 
-    {% csrf_token %}
-    <label>Product Code: </label><br>
-    {{ form.prod_code }}<br>
-    <label>for user: </label><br>
-    {{ form.for_user }}<br>
-    <label>Item Name: </label><br>
-    {{ form.item_name }}<br>
-    <label>Item Description: </label><br>
-    {{ form.item_desc }}<br>
-    <label>Item price: </label><br>
-    {{ form.item_price }}<br>
-    <label>Item Image: </label><br>
-    {{ form.item_image }}<br>
-    <button type="submit">Save</button>
-</form>
+<div class="container">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-header"> 
+                <div class="offset-md-5 card-title">
+                    Add Item
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="POST"> 
+                    {% csrf_token %}
+                    <label class="offset-md-2">Product Code: </label><br>
+                    <span class="offset-md-2">{{ form.prod_code }}</span><br>
+
+                    <label class="offset-md-2">for user: </label><br>
+                    <span class="offset-md-2">{{ form.for_user }}</span><br>
+
+                    <label class="offset-md-2">Item Name: </label><br>
+                    <span class="offset-md-2">{{ form.item_name }}</span><br>
+
+                    <label class="offset-md-2">Item Description: </label><br>
+                    <span class="offset-md-2">{{ form.item_desc }}</span><br>
+
+                    <label class="offset-md-2">Item price: </label><br>
+                    <span class="offset-md-2">{{ form.item_price }}</span><br>
+
+                    <label class="offset-md-2">Item Image: </label><br>
+                    <span class="offset-md-2">{{ form.item_image }}</span><br><br>
+
+                    <button class="btn btn-success btn-sm offset-md-5" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
 
 {% endblock %}
