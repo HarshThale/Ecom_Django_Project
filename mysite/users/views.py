@@ -11,7 +11,7 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
 
-        if form.is_valid:
+        if form.is_valid():
             username = form.cleaned_data.get('username')
             messages.success(request, 'Welcome {}, your account has been created, now you may log in'.format(username))
             
