@@ -7,6 +7,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from products.models import History
+from users.models import CusOrders
 
 # Create your views here.
 # -------------------------------------------------------------------------------
@@ -152,10 +153,13 @@ def delete_item(request, id):
     hist = History.objects.filter(
         prod_ref = item.prod_code
     )
+    
+    Obj_CusOrd = CusOrders.objects.all()
 
     context = {
         'item':item,
-        'hist':hist
+        'hist':hist,
+        'oco':Obj_CusOrd
     }
 
     if request.method == 'POST':
