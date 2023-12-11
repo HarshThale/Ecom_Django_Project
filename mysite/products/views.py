@@ -51,11 +51,31 @@ class IndexClassView(ListView):
 # -------------------------------------------------------------------------------
 
 def detail(request, item_id):
-    
     item = Item.objects.get(pk=item_id)
+    
+    hist = History.objects.filter(
+        prod_ref = item.prod_code
+    )
+    
+    Obj_CusOrd = CusOrders.objects.all()  # error
+    
+    #store and admin
+    if request.user.profile.user_type == 'store' or request.user.profile.user_type == 'Admin':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code
+        )
+        
+    #customer
+    elif request.user.profile.user_type == 'Cust':
+        Obj_CusOrd = CusOrders.objects.filter(
+            prod_code = item.prod_code, 
+            user = request.user.username
+        )
 
     context = {
-        'item':item
+        'item':item,
+        'hist':hist,
+        'oco':Obj_CusOrd
     }
     
     return render(request, 'products/detail.html', context)
@@ -150,18 +170,10 @@ def delete_item(request, id):
     
     item = Item.objects.get(pk=id)
     
-    hist = History.objects.filter(
-        prod_ref = item.prod_code
-    )
-    
-    Obj_CusOrd = CusOrders.objects.all()
-
     context = {
-        'item':item,
-        'hist':hist,
-        'oco':Obj_CusOrd
+        'item':item
     }
-
+    
     if request.method == 'POST':
         
         Obj_History = History(
