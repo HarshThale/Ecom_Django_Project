@@ -7,7 +7,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from products.models import History
-from users.models import CusOrders
+from users.models import CusOrders, CusRatingFeedback
 
 # Create your views here.
 # -------------------------------------------------------------------------------
@@ -51,33 +51,36 @@ class IndexClassView(ListView):
 # -------------------------------------------------------------------------------
 
 def detail(request, item_id):
+    
     item = Item.objects.get(pk=item_id)
     
     hist = History.objects.filter(
         prod_ref = item.prod_code
     )
-    
-    Obj_CusOrd = CusOrders.objects.all()  # error
-    
-    #store and admin
+    # store and admin
     if request.user.profile.user_type == 'store' or request.user.profile.user_type == 'Admin':
         Obj_CusOrd = CusOrders.objects.filter(
             prod_code = item.prod_code
         )
         
-    #customer
+    # customer
     elif request.user.profile.user_type == 'Cust':
         Obj_CusOrd = CusOrders.objects.filter(
-            prod_code = item.prod_code, 
+            prod_code = item.prod_code,
             user = request.user.username
         )
+
+    crf = CusRatingFeedback.objects.filter(
+        prod_code=item.prod_code
+    )
 
     context = {
         'item':item,
         'hist':hist,
-        'oco':Obj_CusOrd
+        'oco':Obj_CusOrd,
+        'crf':crf
     }
-    
+
     return render(request, 'products/detail.html', context)
 
 
