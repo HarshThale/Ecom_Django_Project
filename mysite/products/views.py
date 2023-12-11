@@ -148,9 +148,14 @@ def update_item(request, id):
 def delete_item(request, id):
     
     item = Item.objects.get(pk=id)
+    
+    hist = History.objects.filter(
+        prod_ref = item.prod_code
+    )
 
     context = {
-        'item':item
+        'item':item,
+        'hist':hist
     }
 
     if request.method == 'POST':
