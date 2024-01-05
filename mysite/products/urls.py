@@ -36,4 +36,8 @@ urlpatterns = [
     # function based delete item view
     # -------------------------------------------------------------------------------
     path('delete/<int:id>/', views.delete_item, name='delete_item'),
+    
+    #fuction based category
+    path('category/<str:val>/', views.category, name='category'),
 ]
+

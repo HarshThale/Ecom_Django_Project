@@ -1,0 +1,52 @@
+{% extends 'products/base.html' %}
+
+{% block body %}
+
+    {% for obj in items %}
+
+        <div class="row mb-3">
+            <div class="col-md-3 offset-md-3">
+                <img 
+                    src="{{ obj.item_image }}"
+                    class="card"
+                    height="225px"
+                    width="230px"
+                >
+            </div>
+
+            <div class="col-md-3">
+                <h3 style="font-size: 1.5rem;">
+                    {{ obj.item_name }}
+                </h3>
+
+                <h5
+                    style="font-style:italic;
+                            font-size:1rem">
+                    {{ obj.item_desc | truncatewords:6 }}
+                </h5>
+
+                <h6>
+                    ${{ obj.item_price }}
+                </h6>
+
+            </div>
+
+            <div class="col-md-3">
+
+                
+                {% if user.is_authenticated %}
+                    
+                    <a href="{% url 'products:detail' obj.id %}"
+                        style="width:100px"
+                        class="btn btn-success">
+
+                        Details
+                    </a>
+
+                {% endif %}
+            </div>
+        </div>
+
+    {% endfor %}
+        
+{% endblock %}

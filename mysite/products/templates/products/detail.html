@@ -145,12 +145,12 @@
 
     <!-- green -->
 
-    {% if user.profile.user_type == 'Rest' or user.profile.user_type == 'Cust' or user.profile.user_type == 'Admin' %}
+    {% if user.profile.user_type == 'store' or user.profile.user_type == 'Cust' or user.profile.user_type == 'Admin' %}
 
         {% for obj in oco %}
 
             <div
-                class="row mb-1">
+                class="row mb-3">
 
                 <div
                     class="col-md-8
@@ -210,7 +210,7 @@
                                 {% if user.profile.user_type == 'Cust' %}
                                     <a
                                         class="btn btn-primary btn-sm"
-                                        href="#">
+                                        href="{% url 'users:buy' item.item_price obj.quantity %}">
                                             Buy Now
                                     </a>
                                 {% endif %}
@@ -239,7 +239,7 @@
 
     <!-- blue -->
 
-    {% if user.profile.user_type == 'Rest' or user.profile.user_type == 'Cust' or user.profile.user_type == 'Admin' %}
+    {% if user.profile.user_type == 'store' or user.profile.user_type == 'Cust' or user.profile.user_type == 'Admin' %}
 
         {% for obj in crf %}
 

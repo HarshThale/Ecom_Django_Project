@@ -51,14 +51,13 @@ class IndexClassView(ListView):
 # -------------------------------------------------------------------------------
 
 def detail(request, item_id):
-    
     item = Item.objects.get(pk=item_id)
     
     hist = History.objects.filter(
         prod_ref = item.prod_code
     )
     # store and admin
-    if request.user.profile.user_type == 'store' or request.user.profile.user_type == 'Admin':
+    if request.user.profile.user_type == 'store' or request.user.is_superuser:
         Obj_CusOrd = CusOrders.objects.filter(
             prod_code = item.prod_code
         )
@@ -77,7 +76,7 @@ def detail(request, item_id):
     context = {
         'item':item,
         'hist':hist,
-        'oco':Obj_CusOrd,
+        'oco': Obj_CusOrd,
         'crf':crf
     }
 
@@ -192,3 +191,15 @@ def delete_item(request, id):
         return redirect('products:index')
 
     return render(request, 'products/item-delete.html', context)
+
+
+def category(request, val):
+    items = Item.objects.filter(
+        category = val
+    )
+    
+    context = {
+        'items':items
+    }
+    
+    return render(request, 'products/category.html', context)
