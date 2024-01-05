@@ -17,16 +17,6 @@
             <img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" style="width: 40px; height: 10; margin-top:5px; margin-left: 15px;" class="d-inline-block align-top" alt="">
         </a>
 
-        {% comment %} this is for search functionality {% endcomment %}
-        <form action="{% url 'products:index' %}" method="GET">
-            {% csrf_token %}
-            <span>
-                <b style="color:white">Search: </b>
-                <input type="search" name="item_name">
-                <button type="submit">Search</button>
-            </span>
-        </form>
-
         <div class="navbar">
             {% if user.is_superuser %}
                 <a href="#" class="nav-item nav-link btn btn-light">
@@ -64,6 +54,15 @@
                 <a href="{% url 'products:category' 'AC' %}" class="nav-item nav-link btn btn-light">
                     Accessories
                 </a>
+
+                {% comment %} this is for search functionality {% endcomment %}
+                <form action="{% url 'products:index' %}" method="GET">
+                    {% csrf_token %}
+                    <span>
+                        <input type="search" name="item_name" style="width:89px">
+                        <button type="submit">Search</button>
+                    </span>
+                </form>
 
                 <a href="{% url 'products:create_item' %}" class="nav-item nav-link btn btn-light">
                     Add Item
@@ -114,6 +113,15 @@
                     Accessories
                 </a>
 
+                {% comment %} this is for search functionality {% endcomment %}
+                <form action="{% url 'products:index' %}" method="GET">
+                    {% csrf_token %}
+                    <span>
+                        <input type="search" name="item_name" style="width:89px">
+                        <button type="submit">Search</button>
+                    </span>
+                </form>
+
                 <a href="{% url 'profile' %}" class="nav-item nav-link btn btn-light">
                     Profile
                 </a>
@@ -159,6 +167,15 @@
                     Accessories
                 </a>
 
+                {% comment %} this is for search functionality {% endcomment %}
+                <form action="{% url 'products:index' %}" method="GET">
+                    {% csrf_token %}
+                    <span>
+                        <input type="search" name="item_name" style="width:89px;border-radius:6px">
+                        <button type="submit" style="width:61px; border-radius:30px; border:none;">Search</button>
+                    </span>
+                </form>
+
                 <a href="{% url 'login' %}" class="nav-item nav-link btn btn-light">
                     Login
                 </a>
@@ -169,7 +186,10 @@
             
             {% endif %}
         </div>
+
+
     </nav>
+
 
     {% if messages %}
 

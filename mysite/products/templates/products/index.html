@@ -65,6 +65,32 @@
         </div>
 
     {% endfor %}
+
+    {% comment %} Start Code for pagination {% endcomment %}
+    {% if itemlist.has_previous %}
+        <a href="?page=1">
+            First
+        </a>
+
+        <a href="?page={{ itemlist.previous_page_number }}">
+            previous
+        </a>
+    {% endif %}
+
+    {% comment %} current page {% endcomment %}
+    Page: {{ itemlist.number }} of {{ itemlist.paginator.num_pages }}
+
+    {% if itemlist.has_next %}
+        <a href="?page={{ itemlist.next_page_number }}">
+            Next
+        </a>
+
+        <a href="?page={{ itemlist.paginator.num_pages }}">
+            Last
+        </a>
+    {% endif %}
+
+    {% comment %} end code for pagination {% endcomment %}
         
     {% endblock %}
 </body>
